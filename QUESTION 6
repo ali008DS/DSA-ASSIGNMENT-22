@@ -1,0 +1,14 @@
+def top_k_frequent(words, k):
+    word_freq = {}
+    for word in words:
+        word_freq[word] = word_freq.get(word, 0) + 1
+
+    sorted_words = sorted(word_freq.keys(), key=lambda word: (-word_freq[word], word))
+    return sorted_words[:k]
+
+# Test cases
+print(top_k_frequent(["i", "love", "leetcode", "i", "love", "coding"], 2))
+# Output: ["i", "love"]
+
+print(top_k_frequent(["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4))
+# Output: ["the", "is", "sunny", "day"]

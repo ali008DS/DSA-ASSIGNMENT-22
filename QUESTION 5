@@ -1,0 +1,20 @@
+def nth_ugly_number(n):
+    ugly_numbers = [1]
+    idx2, idx3, idx5 = 0, 0, 0
+
+    for _ in range(n - 1):
+        next_ugly = min(ugly_numbers[idx2] * 2, ugly_numbers[idx3] * 3, ugly_numbers[idx5] * 5)
+        ugly_numbers.append(next_ugly)
+
+        if next_ugly == ugly_numbers[idx2] * 2:
+            idx2 += 1
+        if next_ugly == ugly_numbers[idx3] * 3:
+            idx3 += 1
+        if next_ugly == ugly_numbers[idx5] * 5:
+            idx5 += 1
+
+    return ugly_numbers[-1]
+
+# Test cases
+print(nth_ugly_number(10))  # Output: 12
+print(nth_ugly_number(1))   # Output: 1
